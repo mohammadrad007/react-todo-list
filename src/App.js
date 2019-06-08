@@ -40,6 +40,12 @@ class App extends Component {
       return;
     }
   };
+  clearTodo = id => {
+    let items = [...this.state.items.filter(item => item.id !== id)];
+    this.setState({
+      items
+    });
+  };
   render() {
     return (
       <div className="container">
@@ -51,7 +57,11 @@ class App extends Component {
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
             />
-            <TodoList items={this.state.items} clearLists={this.clearLists} />
+            <TodoList
+              items={this.state.items}
+              clearTodo={this.clearTodo}
+              clearLists={this.clearLists}
+            />
           </div>
         </div>
       </div>
