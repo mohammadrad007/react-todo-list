@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 class TodoList extends Component {
   render() {
-    const { items } = this.props;
+    const { items, clearLists } = this.props;
     return (
       <ul className="list-group my-5">
         <h3 className="text-capitalize text-center">todo list</h3>
@@ -12,6 +12,7 @@ class TodoList extends Component {
         <button
           type="submit"
           className="btn btn-danger btn-block text-capitalize mt-5"
+          onClick={clearLists}
         >
           clear list
         </button>
