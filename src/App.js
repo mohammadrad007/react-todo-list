@@ -7,13 +7,28 @@ import uuid from "uuid";
 class App extends Component {
   state = {
     items: [],
-    id: 0,
+    id: uuid(),
     item: "",
     editItem: false
   };
   handleChange = e => {
     this.setState({
       item: e.target.value
+    });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item
+    };
+    const updatedItems = [...this.state.items, newItem];
+    this.setState({
+      items: updatedItems,
+      item: "",
+      id: uuid(),
+      editItem: false
     });
   };
   render() {
@@ -25,8 +40,9 @@ class App extends Component {
             <TodoInput
               item={this.state.item}
               handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
             />
-            <TodoList />
+            <TodoList items={this.state.items} />
           </div>
         </div>
       </div>
