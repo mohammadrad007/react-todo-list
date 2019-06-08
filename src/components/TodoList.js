@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 class TodoList extends Component {
   render() {
-    const { items, clearLists, clearTodo } = this.props;
+    const { items, clearLists, clearTodo, handleEdit } = this.props;
     return (
       <ul className="list-group my-5">
         <h3 className="text-capitalize text-center">todo list</h3>
@@ -10,6 +10,7 @@ class TodoList extends Component {
           <TodoItem
             key={item.id}
             clearTodo={clearTodo}
+            handleEdit={() => handleEdit(item.id)}
             id={item.id}
             title={item.title}
           />
